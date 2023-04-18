@@ -1,6 +1,6 @@
 # budget app frontend
-Link here : [deployedBudgetApp] (https://deft-meringue-517d0a.netlify.app)
-github link : [budgetAppFrontEnd] ( github.com/touhami-ben/budget-app-frontend.)
+deployed link : [deployedBudgetApp] (https://deft-meringue-517d0a.netlify.app).
+github link : [budgetAppFrontEnd] (https://github.com/touhami-ben/budget-app-frontend).
 
 # Getting Started with Create React App
 
