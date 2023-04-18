@@ -1,6 +1,6 @@
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import Transaction from "./Transaction";
+import  Transaction  from "./Transaction";
 import { useState, useEffect } from "react";
 
 
@@ -8,13 +8,13 @@ const API = process.env.REACT_APP_API_URL;
 
 export default function TransactionS() {
     const[transactions, setTransactions] = useState({});
-    const[accountTotal, setAccountTotal] = useState
+    const[accountTotal, setAccountTotal] = useState(0)
 
     useState(() => {
         axios.get(`${API}/transactions`)
-        .them(res => {
+        .then(res => {
             setTransactions(res.data)
-            console.log(res.data)
+            // console.log(res.data)
         }).catch((error) => {
             console.log(error)
         });
@@ -22,10 +22,10 @@ export default function TransactionS() {
 
     useEffect(() => {
         let total = transactions.length > 0 ? transactions.reduce((sum, transaction) => {
-            return sum + transaction.amount
+            return sum + Number(transaction.amount)
         }, 0) : 0;
         setAccountTotal(total)
-    }, [transactions, setAccountTotal])
+    }, [transactions])
 
      return (
         <div>
@@ -38,6 +38,7 @@ export default function TransactionS() {
           <th>Date</th>
           <th>Name</th>
           <th>Amount</th>
+          <th>Edit</th>
         </tr>
       </thead>
       <tbody>

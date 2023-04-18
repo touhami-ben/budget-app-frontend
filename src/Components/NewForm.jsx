@@ -2,8 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-
+const API =process.env.REACT_APP_API_URL
 
 export default function NewForm() {
     const [transaction, setTransaction] = useState({
@@ -14,17 +16,30 @@ export default function NewForm() {
         category: "",
     })
 
+    const navigate = useNavigate();
+
     function handleTextChange(e) {
         setTransaction({
             ...transaction,
             [e.target.id]: e.target.value
         })
     }
+function handleSubmit(e){
+    e.preventDefault()
+    axios.post(`${API}/transactions`, transaction)
+    .then((res) => {
+        setTransaction(res.data);
+        navigate(`/transactions`)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
 
     return (
         <div>
             <Container>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="date">
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date" value={transaction.date} onChange={handleTextChange} />
