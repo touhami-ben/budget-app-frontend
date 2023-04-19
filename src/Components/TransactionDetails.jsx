@@ -14,22 +14,22 @@ export default function TransactionDetails() {
     date: "",
   });
 
-  const { id } = useParams();
+  const { index } = useParams();
   const navigate = useNavigate()
 
   useEffect(() => {
     axios
-      .get(`${API}/transactions/${id}`)
+      .get(`${API}/transactions/${index}`)
       .then((response) => {
         setTransaction(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
+  }, [index]);
 
   function handleDelete(){
-    axios.delete(`${API}/transactions/${id}`)
+    axios.delete(`${API}/transactions/${index}`)
     .then(() => {
         navigate(`/transactions`);
     }).catch((error) => {
@@ -40,7 +40,7 @@ export default function TransactionDetails() {
   return (
     <div>
         <article>
-            <h2>Transaction #{id}</h2>
+            <h2>Transaction #{index}</h2>
             <ul>
                 <li>Transaction Date: {transaction.date}</li>
                 <li>Item Name: {transaction.name}</li>
@@ -49,7 +49,7 @@ export default function TransactionDetails() {
                 <li>Category: {transaction.category}</li>
             </ul>
             <Button variant="secondary" onClick={() => navigate(`/transactions`)}>Back</Button>
-            <Button variant="secondary" onClick={() => navigate(`/transactions/${id}/edit`)}>Edit</Button>
+            <Button variant="secondary" onClick={() => navigate(`/transactions/${index}/edit`)}>Edit</Button>
             <Button variant="secondary" onClick={handleDelete}>DELETE</Button>
         </article>
     </div>

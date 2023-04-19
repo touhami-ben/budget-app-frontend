@@ -26,9 +26,9 @@ export default function Transaction({ transaction, i}) {
       <td>{i}</td>
         <td>{transaction.date}</td>
         <td><Link to ={`/transactions/${i}`}>{transaction.name}</Link></td>
-        <td>${transaction.amount}</td>
-        <td><Link to={`/transactions/${i}/edit`}></Link></td>
-        <td><Button variant="light" onClick={handleDelete}>DELETE</Button></td>
+        <td>{transaction.amount >= 0 ? `$${transaction.amount}` : `-$${transaction.amount * -1}`}</td>
+        <td><Link to={`/transactions/${i}/edit`}>Edit</Link></td>
+        <td><Button variant="light" onClick={handleDelete}>🚮</Button></td>
     </tr>
   )
 }

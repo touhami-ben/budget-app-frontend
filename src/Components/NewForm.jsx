@@ -38,11 +38,12 @@ function handleSubmit(e){
 
     return (
         <div>
+            <h1>ADD A NEW ITEM</h1>
             <Container>
                 <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="date">
                     <Form.Label>Date</Form.Label>
-                    <Form.Control type="date" value={transaction.date} onChange={handleTextChange} />
+                    <Form.Control type="text" value={transaction.date} onChange={handleTextChange} placeholder="MM/DD/YYYY"/>
                 </Form.Group>
     
                 <Form.Group className="mb-3" controlId="name">
@@ -62,7 +63,7 @@ function handleSubmit(e){
                     <Form.Control type="text" value={transaction.category} onChange={handleTextChange} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    CREATE NEW ITEM
                 </Button>
                 </Form>
         </Container>

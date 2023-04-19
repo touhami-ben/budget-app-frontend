@@ -2,7 +2,7 @@ import React from "react";
 import Transactions from "../Components/Transactions";
 import Container from "react-bootstrap/Container";
 
-export default function Index() {
+ function Index() {
   return (
     <div>
       <Container>
@@ -11,3 +11,4 @@ export default function Index() {
     </div>
   );
 }
+export default Index;

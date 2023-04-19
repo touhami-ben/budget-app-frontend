@@ -17,14 +17,14 @@ export default function EditForm() {
     })
 
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { index } = useParams();
 
     useEffect(() => {
-        axios.get(`${API}/transactions/${id}`)
+        axios.get(`${API}/transactions/${index}`)
         .then((response) => {
             setTransaction(response.data)
         })
-    }, [id])
+    }, [index])
 
     function handleTextChange(e) {
         setTransaction({
@@ -34,10 +34,10 @@ export default function EditForm() {
     }
 
     function updateTransaction() {
-        axios.put(`${API}/transactions/${id}`, transaction)
+        axios.put(`${API}/transactions/${index}`, transaction)
         .then((response) => {
             setTransaction(response.data);
-            navigate(`/transactions/${id}`);
+            navigate(`/transactions/${index}`);
         })
         .catch((error) => {
             console.log(error);

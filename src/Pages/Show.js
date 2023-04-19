@@ -1,7 +1,7 @@
 import TransactionDetails from "../Components/TransactionDetails";
 import Container from "react-bootstrap/Container";
 
-export default function Show() {
+ function Show() {
   return (
     <div>
       <Container>
@@ -10,3 +10,4 @@ export default function Show() {
     </div>
   );
 }
+export default Show;
